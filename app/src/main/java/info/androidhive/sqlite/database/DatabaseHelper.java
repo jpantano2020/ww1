@@ -109,8 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Note.TABLE_NAME,
-                new String[]{Note.COLUMN_ID, Note.COLUMN_NOTE, Note.COLUMN_TIMESTAMP, Note.COLUMN_NOTE2
-                         },
+                new String[]{Note.COLUMN_ID, Note.COLUMN_NOTE, Note.COLUMN_TIMESTAMP, Note.COLUMN_NOTE2},
                 Note.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -148,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Select All Query
         String selectQuery = "SELECT  * FROM " + Note.TABLE_NAME + " ORDER BY " +
-                Note.COLUMN_TIMESTAMP + " DESC";
+                Note.COLUMN_TIMESTAMP + " DESC" + Note.COLUMN_NOTE2;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -160,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 note.setId(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
                 note.setNote(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)));
                 note.setTimestamp(cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
-                //note.setNote2(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE2)));
+                note.setNote2(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE2)));
                 notes.add(note);
             } while (cursor.moveToNext());
         }
@@ -190,6 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(Note.COLUMN_NOTE, note.getNote());
+        values.put(Note.COLUMN_NOTE2, note.getNote2());
 
         // updating row
         return db.update(Note.TABLE_NAME, values, Note.COLUMN_ID + " = ?",

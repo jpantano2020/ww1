@@ -43,9 +43,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     }
 
 
-    public NotesAdapter(Context context, List<Note> notesList) {
+    public NotesAdapter(Context context, List<Note> notesList, List<Note> notesList2) {
         this.context = context;
         this.notesList = notesList;
+        this.notesList2 = notesList2;
     }
 
     @Override
@@ -62,7 +63,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         holder.note.setText(note.getNote());
 
-      //  holder.note2.setText(note.getNote2());
+         holder.note2.setText(note.getNote2());
+
 
         // Displaying dot from HTML character code
         holder.dot.setText(Html.fromHtml("&#8226;"));
@@ -76,9 +78,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         return notesList.size();
     }
 
-    @Override
-    public int getItemCount2() {
-        return notesList2.size();
+
+    public int getItemCount2() { return notesList2.size();
     }
 
 

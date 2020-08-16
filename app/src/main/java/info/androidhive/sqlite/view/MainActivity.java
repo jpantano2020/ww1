@@ -36,6 +36,7 @@ import info.androidhive.sqlite.utils.RecyclerTouchListener;
 public class MainActivity extends AppCompatActivity {
     private NotesAdapter mAdapter;
     private List<Note> notesList = new ArrayList<>();
+    private List<Note> notesList2 = new ArrayList<>();
     private CoordinatorLayout coordinatorLayout;
     private RecyclerView recyclerView;
     private TextView noNotesView;
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAdapter = new NotesAdapter(this, notesList);
+        mAdapter = new NotesAdapter(this, notesList, notesList2);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
