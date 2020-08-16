@@ -25,6 +25,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
     private Context context;
     private List<Note> notesList;
+    private List<Note> notesList2;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView note;
