@@ -10,7 +10,6 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -25,28 +24,28 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
     private Context context;
     private List<Note> notesList;
-    private List<Note> notesList2;
+    private List<Note> notesItem;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView note;
         public TextView dot;
         public TextView timestamp;
-        public TextView note2;
+        public TextView item;
 
         public MyViewHolder(View view) {
             super(view);
             note = view.findViewById(R.id.note);
             dot = view.findViewById(R.id.dot);
             timestamp = view.findViewById(R.id.timestamp);
-            note2 = view.findViewById(R.id.note2);
+            item = view.findViewById(R.id.item);
         }
     }
 
 
-    public NotesAdapter(Context context, List<Note> notesList, List<Note> notesList2) {
+    public NotesAdapter(Context context, List<Note> notesList, List<Note> notesItem) {
         this.context = context;
         this.notesList = notesList;
-        this.notesList2 = notesList2;
+        this.notesItem= notesItem;
     }
 
     @Override
@@ -63,7 +62,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         holder.note.setText(note.getNote());
 
-         holder.note2.setText(note.getNote2());
+         holder.item.setText(note.getItem());
 
 
         // Displaying dot from HTML character code
@@ -79,8 +78,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     }
 
 
-    public int getItemCount2() { return notesList2.size();
-    }
+    public int getItemCount2() { return notesItem.size(); }
 
 
     /**

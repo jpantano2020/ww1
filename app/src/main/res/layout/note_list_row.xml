@@ -38,7 +38,7 @@
         android:textSize="@dimen/note_list_text" />
 
     <TextView
-        android:id="@+id/note2"
+        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/note"

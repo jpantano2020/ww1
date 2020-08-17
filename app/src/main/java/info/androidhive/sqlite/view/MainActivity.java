@@ -36,7 +36,7 @@ import info.androidhive.sqlite.utils.RecyclerTouchListener;
 public class MainActivity extends AppCompatActivity {
     private NotesAdapter mAdapter;
     private List<Note> notesList = new ArrayList<>();
-    private List<Note> notesList2 = new ArrayList<>();
+    private List<Note> notesItem = new ArrayList<>();
     private CoordinatorLayout coordinatorLayout;
     private RecyclerView recyclerView;
     private TextView noNotesView;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAdapter = new NotesAdapter(this, notesList, notesList2);
+        mAdapter = new NotesAdapter(this, notesList, notesItem);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
      * Inserting new note in db
      * and refreshing the list
      */
-    private void createNote(String note,String note2) {
+    private void createNote(String note,String item) {
         // inserting note in db and getting
         // newly inserted note id
-        long id = db.insertNote(note, note2);
+        long id = db.insertNote(note, item);
 
         // get the newly inserted note from db
         Note n = db.getNote(id);
@@ -148,8 +148,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private void updateNote(String note, int position) {
         Note n = notesList.get(position);
+
         // updating note text
         n.setNote(note);
+
 
         // updating note in db
         db.updateNote(n);
@@ -214,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilderUserInput.setView(view);
 
         final EditText inputNote = view.findViewById(R.id.note);
-        final EditText inputNote2 = view.findViewById(R.id.note2);
+        final EditText inputItem = view.findViewById(R.id.item);
         TextView dialogTitle = view.findViewById(R.id.dialog_title);
         dialogTitle.setText(!shouldUpdate ? getString(R.string.lbl_new_note_title) : getString(R.string.lbl_edit_note_title));
 
@@ -255,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                     updateNote(inputNote.getText().toString(), position);
                 } else {
                     // create new note
-                    createNote(inputNote.getText().toString(), inputNote2.getText().toString());
+                    createNote(inputNote.getText().toString(), inputItem.getText().toString());
 
                 }
             }
