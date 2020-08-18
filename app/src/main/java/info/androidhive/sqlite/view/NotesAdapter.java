@@ -45,7 +45,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     public NotesAdapter(Context context, List<Note> notesList, List<Note> notesItem) {
         this.context = context;
         this.notesList = notesList;
-        this.notesItem= notesItem;
+        this.notesItem = notesItem;
     }
 
     @Override
@@ -62,14 +62,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         holder.note.setText(note.getNote());
 
-         holder.item.setText(note.getItem());
-
 
         // Displaying dot from HTML character code
         holder.dot.setText(Html.fromHtml("&#8226;"));
 
         // Formatting and displaying timestamp
         holder.timestamp.setText(formatDate(note.getTimestamp()));
+
+        holder.item.setText(note.getItem());
+
     }
 
     @Override
@@ -78,7 +79,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     }
 
 
-    public int getItemCount2() { return notesItem.size(); }
+    //public int getItemCount2() { return notesItem.size(); }
 
 
     /**

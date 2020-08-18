@@ -41,8 +41,8 @@ public class Note {
         this.timestamp = timestamp;
     }
 
-  public String getItem() { return item; }
-  public void setItem(String item) { this.item = item; }
+    public String getItem() { return item; }
+    public void setItem(String item) { this.item = item; }
 
 
 }

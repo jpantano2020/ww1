@@ -46,4 +46,22 @@
         android:textColor="@color/note_list_text"
         android:textSize="@dimen/note_list_text" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </RelativeLayout>

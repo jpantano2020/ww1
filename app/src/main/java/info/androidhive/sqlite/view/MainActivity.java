@@ -100,10 +100,12 @@ public class MainActivity extends AppCompatActivity {
      * Inserting new note in db
      * and refreshing the list
      */
-    private void createNote(String note,String item) {
+
+    //DONE HERE
+    private void createNote(String note, String item) {
         // inserting note in db and getting
         // newly inserted note id
-        long id = db.insertNote(note, item);
+        long id = db.insertNote(note,item);
 
         // get the newly inserted note from db
         Note n = db.getNote(id);
@@ -119,26 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //
-   // private void createNote2(String note2) {
-        // inserting note in db and getting
-        // newly inserted note id
-   //     long id = db.insertNote2(note2);
 
-        // get the newly inserted note from db
-   //     Note n = db.getNote(id);
-
-    //    if (n != null) {
-            // adding new note to array list at 0 position
-     //       notesList.add(0, n);
-
-            // refreshing the list
-     //       mAdapter.notifyDataSetChanged();
-
-   //         toggleEmptyNotes();
-     //   }
-   // }
-    //
 
 
 
@@ -146,11 +129,14 @@ public class MainActivity extends AppCompatActivity {
      * Updating note in db and updating
      * item in the list by its position
      */
-    private void updateNote(String note, int position) {
+
+
+    private void updateNote(String note, String item, int position) {
         Note n = notesList.get(position);
 
         // updating note text
         n.setNote(note);
+        n.setItem(item);
 
 
         // updating note in db
@@ -215,13 +201,18 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(MainActivity.this);
         alertDialogBuilderUserInput.setView(view);
 
+
         final EditText inputNote = view.findViewById(R.id.note);
+
         final EditText inputItem = view.findViewById(R.id.item);
+
         TextView dialogTitle = view.findViewById(R.id.dialog_title);
         dialogTitle.setText(!shouldUpdate ? getString(R.string.lbl_new_note_title) : getString(R.string.lbl_edit_note_title));
 
         if (shouldUpdate && note != null) {
             inputNote.setText(note.getNote());
+            inputItem.setText(note.getItem());
+
         }
         alertDialogBuilderUserInput
                 .setCancelable(false)
@@ -254,15 +245,21 @@ public class MainActivity extends AppCompatActivity {
                 // check if user updating note
                 if (shouldUpdate && note != null) {
                     // update note by it's id
-                    updateNote(inputNote.getText().toString(), position);
+                    updateNote(inputNote.getText().toString(),inputItem.getText().toString(), position);
                 } else {
                     // create new note
-                    createNote(inputNote.getText().toString(), inputItem.getText().toString());
+                    createNote(inputNote.getText().toString(),inputItem.getText().toString() );
+
 
                 }
             }
         });
     }
+
+
+
+
+
 
     /**
      * Toggling list and empty notes view
@@ -277,6 +274,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+
+
+    //EXPORT HERE
     public void export(View view){
 
         //Data

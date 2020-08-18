@@ -26,20 +26,20 @@
         android:layout_marginBottom="@dimen/dimen_10"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="20sp"
-        android:text="@string/lbl_new_note_title2"
+        android:text="Customer Name:"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/lbl_new_note_title2"
         android:textStyle="normal"
         android:visibility="visible" />
 
     <EditText
-        android:id="@+id/note2"
+        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="@string/hint_enter_note2"
-        android:inputType="number|textCapSentences"
+        android:inputType="text|textCapSentences"
         android:lines="4"
         android:textColorHint="@color/hint_enter_note"
         android:textSize="@dimen/input_new_note" />
